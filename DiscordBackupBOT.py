@@ -13,7 +13,7 @@ with open("config.json", "r") as dump:
 
 @bot.event
 async def on_ready():
-    print("[+] REsearchBackup")
+    print("[+] DiscordBackupBOT")
 
 
 @bot.command(pass_context=True)
