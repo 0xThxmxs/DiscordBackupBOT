@@ -4,7 +4,7 @@ import discord.utils
 
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="b!create")
+bot = commands.Bot(command_prefix="b!")
 bot.remove_command("help")
 
 with open("config.json", "r") as dump:
