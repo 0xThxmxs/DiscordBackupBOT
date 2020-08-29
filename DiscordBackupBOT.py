@@ -31,7 +31,7 @@ async def create(ctx):
                     if not os.path.exists("backup/{}".format(channel)):
                         os.makedirs("backup/{}".format(channel))
 
-                    with open("backup/{}/messages.txt".format(channel), "a") as file:
+                    with open("backup/{}/messages.txt".format(channel), "w") as file:
                         for message in await channel.history().flatten():
                             file.write("{}\n".format(message.content))
 
