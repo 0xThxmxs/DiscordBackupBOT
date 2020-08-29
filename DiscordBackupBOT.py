@@ -53,10 +53,7 @@ async def restore(ctx):
 				for channel in category.text_channels:
 					with open("backup/{}/messages.txt".format(channel), "r") as file:
 						for message in file.readlines():
-							try:
-								await channel.send(message)
-							except:
-								pass
+							await channel.send(message)
 
 				await ctx.send("[*] Backup restored :white_check_mark:")
 
@@ -70,13 +67,13 @@ async def delete(ctx):
 			if category.id == config["category_to_restore_id"]:
 				await ctx.send("[*] Deleting backup...")
 
-				if os.path.exists("backup"):
-					shutil.rmtree("backup")
-				for channel in category.text_channels:
-					try:
+				try:
+					if os.path.exists("backup"):
+						shutil.rmtree("backup")
+					for channel in category.text_channels:
 						await channel.delete()
-					except:
-						pass
+				except:
+					await ctx.send("[!] You cannot delete the backup with restoring! :x:")
 
 				await ctx.send("[+] Backup deleted :white_check_mark:")
 
