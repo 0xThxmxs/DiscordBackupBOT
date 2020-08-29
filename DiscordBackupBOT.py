@@ -1,5 +1,7 @@
 import json
 import os
+import shutil
+
 import discord.utils
 
 from discord.ext import commands
@@ -52,7 +54,10 @@ async def restore(ctx):
                 for channel in category.text_channels:
                     with open("backup/{}/messages.txt".format(channel), "r") as file:
                         for message in file.readlines():
-                            await channel.send(message)
+                            try:
+                                await channel.send(message)
+                            except:
+                                pass
 
                 await ctx.send("[*] Backup restored :white_check_mark:")
 
@@ -67,9 +72,12 @@ async def delete(ctx):
                 await ctx.send("[*] Deleting backup...")
 
                 if os.path.exists("backup"):
-                    os.remove("backup")
+                    shutil.rmtree("backup")
                 for channel in category.text_channels:
-                    await channel.delete()
+                    try:
+                        await channel.delete()
+                    except:
+                        pass
 
                 await ctx.send("[+] Backup deleted :white_check_mark:")
 
