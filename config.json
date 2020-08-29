@@ -1,0 +1,5 @@
+{
+	"token": "{bot.token}",
+	"category_to_backup_id": 123456789123456789,
+	"category_to_restore_id": 123456789123456789
+}
