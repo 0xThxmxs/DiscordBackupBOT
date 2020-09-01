@@ -3,16 +3,6 @@
 
 [![Python 3.8.X+](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/downloads/release/python-380/)
 
-## Use
-
-Import `DiscordPyMD.py` into the Discord Bot file.
-
-```py
-import DiscordPyMD.DiscordPyMD as dpymd # {as dpymd} is obviously optional.
-```
-
-### You will get access to it, you now able to use it !
-
 ## Creating backup
 ![CreatingBackup](https://0xthxmxs.github.io/repo/img/project/discordbackupbot/create_backup.gif)
 ## Restoring backup
