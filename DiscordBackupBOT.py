@@ -72,6 +72,7 @@ async def delete(ctx):
 						shutil.rmtree("backup")
 					for channel in category.text_channels:
 						await channel.delete()
+
 				except:
 					await ctx.send("[!] You cannot delete the backup with restoring! :x:")
 
