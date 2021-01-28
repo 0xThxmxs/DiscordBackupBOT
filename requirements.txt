@@ -1,4 +1,1 @@
-json
-os
-shutil
 discord

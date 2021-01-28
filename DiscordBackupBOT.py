@@ -30,7 +30,7 @@ async def create(ctx):
 					if not os.path.exists("backup/{}".format(channel)):
 						os.makedirs("backup/{}".format(channel))
 
-					with open("backup/{}/messages.txt".format(channel), "w") as file:
+					with open("backup/{}/messages.txt".format(channel), "w", encoding="utf-8") as file:
 						for message in await channel.history().flatten():
 							file.write("{}\n".format(message.content))
 
@@ -51,9 +51,10 @@ async def restore(ctx):
 						await ctx.guild.create_text_channel(channel_directory, category=category)
 
 				for channel in category.text_channels:
-					with open("backup/{}/messages.txt".format(channel), "r") as file:
+					with open("backup/{}/messages.txt".format(channel), "r", encoding="utf-8") as file:
 						for message in file.readlines():
-							await channel.send(message)
+							if message != "\n":
+								await channel.send(message)
 
 				await ctx.send("[*] Backup restored :white_check_mark:")
 
@@ -74,7 +75,7 @@ async def delete(ctx):
 						await channel.delete()
 
 				except:
-					await ctx.send("[!] You cannot delete the backup with restoring! :x:")
+					await ctx.send("[!] You cannot delete the backup while restoring! :x:")
 
 				await ctx.send("[+] Backup deleted :white_check_mark:")
 
